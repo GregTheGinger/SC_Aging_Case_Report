@@ -11,10 +11,11 @@ namespace ACR
     class CombineInputFiles
     {
         //Name of file to combine
-        string file_ams = @"Import\AMS.csv";
-        string file_apac = @"Import\APAC.csv";
-        string file_emea_bcn = @"Import\EMEA_BCN.csv";
-        string file_emea_prg = @"Import\EMEA_PRG.csv";
+        string file_ams = @"Import\AMS.txt";
+        string file_apac = @"Import\APAC.txt";
+        string file_emea_bcn = @"Import\EMEA_BCN.txt";
+        string file_emea_prg = @"Import\EMEA_PRG.txt";
+        string file_GWFM_all_region = @"Import\ACR.txt";
 
         public void CreateFile()
         {
@@ -37,8 +38,13 @@ namespace ACR
             {
                 emea_prg();
             }
+            
+            if (File.Exists(file_GWFM_all_region))
+            {
+                GWFM_all();
+            }
 
-            string outputFile = @"Import\100day.csv";
+            string outputFile = @"Import\ACR.csv";
             File.Delete(outputFile);
             FileInfo CombinedFile_Output = new FileInfo(outputFile);
             File.WriteAllLines(outputFile, combined.Cast<string>());
@@ -92,6 +98,20 @@ namespace ACR
         private void emea_prg()
         {
             string[] rawData = System.IO.File.ReadAllLines(file_emea_prg);
+            int count = 0;
+            foreach (string rawRecord in rawData)
+            {
+                //string[] temp = rawRecord.Split('');
+                string temp = rawRecord;
+                temp = rawRecord.Replace("\"", "");
+                combined.Add(temp);
+                //count++;
+            }
+        }
+
+        private void GWFM_all()
+        {
+            string[] rawData = System.IO.File.ReadAllLines(file_GWFM_all_region);
             int count = 0;
             foreach (string rawRecord in rawData)
             {

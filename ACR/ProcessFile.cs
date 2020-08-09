@@ -13,7 +13,7 @@ namespace ACR
 {
     class ProcessFile
     {
-        private static string file = @"Import\100day.csv";
+        private static string file = @"Import\ACR.csv";
 
         private string[] field1;
         private string[] field2;
@@ -65,7 +65,7 @@ namespace ACR
             field17 = new string[length];
             field18 = new string[length];
             field19 = new string[length];
-            field20 = new string[length];
+            field20 = new string[length];                    
         }
 
         public void RawRead()
@@ -104,87 +104,87 @@ namespace ACR
                 count++;
             }
 
-            Console.WriteLine("\nRaw file import done \nDo you want a preview output? (Y/N)");
-            ConsoleKeyInfo read = Console.ReadKey();
-            if (read.KeyChar.ToString() == "y" || read.KeyChar.ToString() == "Y")
-            {
-                Console.WriteLine("\nHow many rows do you want to preview? ");
-                ConsoleKeyInfo previewAmt = Console.ReadKey();
-                try
-                {
-                    previewOutput(Int32.Parse(previewAmt.KeyChar.ToString()));
-                }
-                catch
-                {
-                    Console.Clear();
-                    Console.WriteLine("Error occured...\nTry import again? (Y/N)");
-                    ConsoleKeyInfo errorRead = Console.ReadKey();
-                    if (errorRead.KeyChar.ToString() == "y" || errorRead.KeyChar.ToString() == "Y")
-                    {
-                        reRunRawImport();
-                    }
-                }
-            }
+            //Console.WriteLine("\nRaw file import done \nDo you want a preview output? (Y/N)");
+            //ConsoleKeyInfo read = Console.ReadKey();
+            //if (read.KeyChar.ToString() == "y" || read.KeyChar.ToString() == "Y")
+            //{
+            //    Console.WriteLine("\nHow many rows do you want to preview? ");
+            //    ConsoleKeyInfo previewAmt = Console.ReadKey();
+            //    try
+            //    {
+            //        previewOutput(Int32.Parse(previewAmt.KeyChar.ToString()));
+            //    }
+            //    catch
+            //    {
+            //        Console.Clear();
+            //        Console.WriteLine("Error occured...\nTry import again? (Y/N)");
+            //        ConsoleKeyInfo errorRead = Console.ReadKey();
+            //        if (errorRead.KeyChar.ToString() == "y" || errorRead.KeyChar.ToString() == "Y")
+            //        {
+            //            reRunRawImport();
+            //        }
+            //    }
+            //}
             startExcelProcess();
         }
 
-        private void previewOutput(int previewAmt)
-        {
-            if (previewAmt > (field1.Length))
-            {
-                previewAmt = field1.Length;
-            }
+        //private void previewOutput(int previewAmt)
+        //{
+        //    if (previewAmt > (field1.Length))
+        //    {
+        //        previewAmt = field1.Length;
+        //    }
 
-            for (int y = 0; y < previewAmt; y++)
-            {
-                if (y == 0)
-                {
-                    Console.WriteLine(String.Format("\n\nPREVIEW OUTPUT:\n\n{0,-20} | {1,-20} | {2,-20} | {3,-20} | {4,-20} | {5,-20} | {6,-20} | {7,-20} | {8,-20} | {9,-20}", "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6", "Field 7", "Field 8", "Field 9", "Field 10"));
-                    Console.WriteLine("--------------------------------------------------------------------------------");
-                }
+        //    for (int y = 0; y < previewAmt; y++)
+        //    {
+        //        if (y == 0)
+        //        {
+        //            Console.WriteLine(String.Format("\n\nPREVIEW OUTPUT:\n\n{0,-20} | {1,-20} | {2,-20} | {3,-20} | {4,-20} | {5,-20} | {6,-20} | {7,-20} | {8,-20} | {9,-20}", "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6", "Field 7", "Field 8", "Field 9", "Field 10"));
+        //            Console.WriteLine("--------------------------------------------------------------------------------");
+        //        }
 
-                Console.WriteLine(String.Format("{0,-20} | {1,-20} | {2,-20} | {3,-20} | {4,-20} | {5,-20} | {6,-20} | {7,-20} | {8,-20} | {9,-20}", field1[y], field2[y], field3[y], field4[y], field5[y], field6[y], field7[y], field8[y], field8[y], field10[y]));
-            }
-            Console.WriteLine("--------------------------------------------------------------------------------\n");
+        //        Console.WriteLine(String.Format("{0,-20} | {1,-20} | {2,-20} | {3,-20} | {4,-20} | {5,-20} | {6,-20} | {7,-20} | {8,-20} | {9,-20}", field1[y], field2[y], field3[y], field4[y], field5[y], field6[y], field7[y], field8[y], field8[y], field10[y]));
+        //    }
+        //    Console.WriteLine("--------------------------------------------------------------------------------\n");
 
-            Console.WriteLine("Do you need to run the raw import again? (Y/N)");
-            ConsoleKeyInfo read = Console.ReadKey();
-            if (read.KeyChar.ToString() == "y" || read.KeyChar.ToString() == "Y")
-            {
-                reRunRawImport();
-            }
-        }
+        //    Console.WriteLine("Do you need to run the raw import again? (Y/N)");
+        //    ConsoleKeyInfo read = Console.ReadKey();
+        //    if (read.KeyChar.ToString() == "y" || read.KeyChar.ToString() == "Y")
+        //    {
+        //        reRunRawImport();
+        //    }
+        //}
 
-        private void reRunRawImport()
-        {
-            Console.Clear();
-            Program pro = new Program();
-            pro.reRun();
-        }
+        //private void reRunRawImport()
+        //{
+        //    Console.Clear();
+        //    Program pro = new Program();
+        //    pro.reRun();
+        //}
 
-        public string getField1Value(int index)
-        {
-            string value = field1[index];
-            return value;
-        }
+        //public string getField1Value(int index)
+        //{
+        //    string value = field1[index];
+        //    return value;
+        //}
 
-        public string getField2Value(int index)
-        {
-            string value = field2[index];
-            return value;
-        }
+        //public string getField2Value(int index)
+        //{
+        //    string value = field2[index];
+        //    return value;
+        //}
 
-        public string getField3Value(int index)
-        {
-            string value = field3[index];
-            return value;
-        }
+        //public string getField3Value(int index)
+        //{
+        //    string value = field3[index];
+        //    return value;
+        //}
 
-        public string getField4Value(int index)
-        {
-            string value = field4[index];
-            return value;
-        }
+        //public string getField4Value(int index)
+        //{
+        //    string value = field4[index];
+        //    return value;
+        //}
 
         //AMS - Who reports to who (AMS- Nickie vs AMS-Jimmy Excel Worksheets)        
         private static string AMS_ReportsTo_File = @"Import\AMS_ReportsTo.csv";
@@ -261,13 +261,31 @@ namespace ACR
 
             return "fail";
         }
+        
+        private string getAge()
+        {
+            string acr_age_file_name = @"Import\ACR_AGE.csv";            
+            int age_file = File.ReadAllLines(acr_age_file_name).Count();
+
+            if (age_file > 1 || age_file < 1)
+            {
+                Console.WriteLine("ACR_AGE.csv needs to have only one record within.");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
+            string[] age = new string[age_file];
+            age[0] = File.ReadAllText(acr_age_file_name);
+
+            return age[0];
+        }
 
         private void startExcelProcess()
         {
             // Get the current date.
             DateTime PCDATE = DateTime.Today;
 
-            string outputFile = @"Output\100_Day_GWFM_" + PCDATE.ToString("yyyyMMdd") + ".xlsx";
+            string outputFile = @"Output\ACR_" + getAge() + "_Day_GWFM_" + PCDATE.ToString("yyyyMMdd") + ".xlsx";
             File.Delete(outputFile);
             FileInfo excelInfo = new FileInfo(outputFile);
             ExcelPackage excel = new ExcelPackage(excelInfo);

@@ -19,7 +19,7 @@ namespace ACR
         {
             CombineInputFiles combine_files = new CombineInputFiles();
             combine_files.CreateFile();
-            string file = @"Import\100day.csv";
+            string file = @"Import\ACR.csv";
             if (File.Exists(file))
             {
                 Console.WriteLine("\nFound the import file");
